@@ -1,7 +1,7 @@
 FROM tomcat:latest
 
 ### create by TRINH ANH QUAN
-MAINTAINER TRINH ANH QUAN
+LABEL key="TRINH ANH QUAN"
 
 VOLUME /usr/local/tomcat
 
