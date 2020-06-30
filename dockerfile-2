@@ -1,0 +1,26 @@
+FROM centos:centos7.7.1908
+LABEL TRINH ANH QUAN <anhquan_trinh@outlook.com>
+
+#Copy file, install and define enviroment for Maven
+#1- Prepare java package and maven package
+COPY *.tar.gz /opt/
+
+#2- Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
+ENV JAVA_HOME /opt/jdk-11
+ENV M3_HOME /opt/maven
+
+#3- Set work location for user
+WORKDIR /opt/maven
+
+#4- unzip Maven package and setting enviroment
+RUN tar -zxf /opt/apache-maven-*.tar.gz -C /opt/ \
+  && echo "soft link for maven" \
+  && ln -s /opt/apache-maven-3.6.3 /opt/maven \
+  && echo "setting location time for container" \
+  && ln -nfs /usr/share/zoneinfo/Asia/Singapore /etc/localtime \
+  && echo "unzip java" \
+  && tar -zxf /opt/openjdk-11+28_linux-x64_bin.tar.gz -C /opt/ \
+  && echo "link for mvn command" \
+  && ln -s /opt/maven/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
+
+CMD [""]
