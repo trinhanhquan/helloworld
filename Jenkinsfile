@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      yaml "pod.yaml"
+      yaml 'pod.yaml'
     }
   }
   stages {
@@ -9,9 +9,9 @@ pipeline {
       steps {
         container('maven') {
           sh '''
-	    mvn -version
+	          mvn -version
             mvn package
-	    '''
+	          '''
         }
         container('busybox') {
           sh '/bin/busybox'
