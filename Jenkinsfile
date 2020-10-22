@@ -23,10 +23,13 @@ spec:
     }
   }
   stages {
-    stage('Run maven') {
+    stage('build maven') {
       steps {
         container('maven') {
-          sh 'mvn -version'
+          sh '''
+	    mvn -version
+            mvn package
+	    '''
         }
         container('busybox') {
           sh '/bin/busybox'
