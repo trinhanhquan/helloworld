@@ -7,6 +7,6 @@ VOLUME /usr/local/tomcat
 
 EXPOSE 8080
 
-COPY target/hello-world-war-1.0.0.war "$CATALINA_HOME/webapps/"
+COPY target/*.war "$CATALINA_HOME/webapps/"
 
 CMD ["catalina.sh", "run"]
