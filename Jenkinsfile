@@ -51,10 +51,12 @@ spec:
     }
   }
   stages('build images') {
+    stage('build images') {
     steps {
         container('buildkitd') {
           sh 'docker login -u trinhanhquan.it@gmail.com -p Anhquan123@'
         }
-    }
+      }
+    }  
   }
 }
