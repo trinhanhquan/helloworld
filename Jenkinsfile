@@ -2,7 +2,27 @@
 pipeline {
   agent {
     kubernetes {
-      yaml 'pod.yaml'
+      yaml '''
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  labels:
+    some-label: some-label-value
+  namespace: jenkins
+spec:
+  containers:
+  - name: maven
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
+    '''
     }
   }
   stages {
