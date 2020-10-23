@@ -53,6 +53,13 @@ spec:
       steps {
         container('buildkitd') {
           sh 'docker login -u trinhanhquan -p Anhquan123@'
+          sh '''
+          buildctl build \
+          --frontend=dockerfile.v0 \
+          --local context=. \
+          --local dockerfile=.
+          --output type=image,name=trinhanhquan/cicd-helloworld:v1.0,push=true
+          '''
         }
       }
     }  
