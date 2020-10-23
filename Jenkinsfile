@@ -58,8 +58,8 @@ spec:
           buildctl build \
           --frontend=dockerfile.v0 \
           --local context=. \
-          --local dockerfile=.
-          --output type=image,name=trinhanhquan/cicd-helloworld:v1.0,push=true
+          --local dockerfile=. \
+          --output type=image,name=docker.io/trinhanhquan/cicd-helloworld:v1.0,push=true
           '''
         }
       }
