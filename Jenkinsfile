@@ -54,6 +54,7 @@ spec:
         container('buildkitd') {
           sh 'docker login -u trinhanhquan -p Anhquan123@'
           sh '''
+          ls -tlra
           buildctl build \
           --frontend=dockerfile.v0 \
           --local context=. \
