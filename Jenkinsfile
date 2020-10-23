@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
   - name: buildkitd
-    image: moby/buildkit:master
+    image: moby/buildkit:custom-trinhq-v1.0
     readinessProbe:
       exec:
         command:
@@ -52,7 +52,7 @@ spec:
     stage('build images') {
       steps {
         container('buildkitd') {
-          sh 'docker login -u trinhanhquan.it@gmail.com -p Anhquan123@'
+          sh 'docker login -u trinhanhquan -p Anhquan123@'
         }
       }
     }  
