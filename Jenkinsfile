@@ -37,7 +37,7 @@ spec:
       '''
     }
   }
-  stages {
+  stages('Maven build') {
     stage('build maven') {
       steps {
         container('maven') {
@@ -46,10 +46,15 @@ spec:
             mvn package
 	          '''
         }
-        container('busybox') {
-          sh '/bin/busybox'
-        }
       }
+      
+    }
+  }
+  stages('build images') {
+    steps {
+        container('buildkitd') {
+          sh 'docker login -u trinhanhquan.it@gmail.com -p Anhquan123@'
+        }
     }
   }
 }
